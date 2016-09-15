@@ -12,6 +12,8 @@ public class ViewAllCommand extends Command {
 
     public static final String COMMAND_WORD = "viewall";
 
+    private static final boolean mutatesData = false;
+    
     public static final String MESSAGE_USAGE = COMMAND_WORD + ":\n" + "Shows all details of the person "
             + "identified by the index number in the last shown person listing.\n\t"
             + "Parameters: INDEX\n\t"
@@ -36,5 +38,10 @@ public class ViewAllCommand extends Command {
         } catch (IndexOutOfBoundsException ie) {
             return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
+    }
+    
+    @Override
+    public boolean isMutating() {
+    	return mutatesData;
     }
 }

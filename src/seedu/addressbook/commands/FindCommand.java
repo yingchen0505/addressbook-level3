@@ -16,7 +16,7 @@ public class FindCommand extends Command {
             + "the specified keywords (case-sensitive) and displays them as a list with index numbers.\n\t"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n\t"
             + "Example: " + COMMAND_WORD + " alice bob charlie";
-
+    private static final boolean mutatesData = false;
     private final Set<String> keywords;
 
     public FindCommand(Set<String> keywords) {
@@ -51,6 +51,11 @@ public class FindCommand extends Command {
             }
         }
         return matchedPersons;
+    }
+    
+    @Override
+    public boolean isMutating() {
+    	return mutatesData;
     }
 
 }

@@ -10,6 +10,8 @@ public class HelpCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ":\n" +"Shows program usage instructions.\n\t"
             + "Example: " + COMMAND_WORD;
+    
+    private static final boolean mutatesData = false;
 
     public static final String MESSAGE_ALL_USAGES = AddCommand.MESSAGE_USAGE
             + "\n" + DeleteCommand.MESSAGE_USAGE
@@ -26,5 +28,10 @@ public class HelpCommand extends Command {
     @Override
     public CommandResult execute() {
         return new CommandResult(MESSAGE_ALL_USAGES);
+    }
+    
+    @Override
+    public boolean isMutating() {
+    	return mutatesData;
     }
 }

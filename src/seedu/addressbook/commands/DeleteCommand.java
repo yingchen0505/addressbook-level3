@@ -18,7 +18,7 @@ public class DeleteCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
-
+    private static final boolean mutatesData = true;
 
     public DeleteCommand(int targetVisibleIndex) {
         super(targetVisibleIndex);
@@ -37,6 +37,11 @@ public class DeleteCommand extends Command {
         } catch (PersonNotFoundException pnfe) {
             return new CommandResult(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK);
         }
+    }
+    
+    @Override
+    public boolean isMutating() {
+    	return mutatesData;
     }
 
 }

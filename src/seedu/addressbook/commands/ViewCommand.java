@@ -11,6 +11,8 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 public class ViewCommand extends Command {
 
     public static final String COMMAND_WORD = "view";
+    
+    private static final boolean mutatesData = false;
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ":\n" + "Shows the non-private details of the person "
             + "identified by the index number in the last shown person listing.\n\t"
@@ -36,6 +38,11 @@ public class ViewCommand extends Command {
         } catch (IndexOutOfBoundsException ie) {
             return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
+    }
+    
+    @Override
+    public boolean isMutating() {
+    	return mutatesData;
     }
 
 }
