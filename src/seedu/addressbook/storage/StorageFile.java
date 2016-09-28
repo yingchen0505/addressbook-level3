@@ -43,9 +43,9 @@ public class StorageFile extends Storage {
         }
     }
 
-    private final JAXBContext jaxbContext;
+    protected JAXBContext jaxbContext;
 
-    public final Path path;
+    public Path path;
 
     /**
      * @throws InvalidStorageFilePathException if the default path is invalid
@@ -74,7 +74,7 @@ public class StorageFile extends Storage {
      * Returns true if the given path is acceptable as a storage file.
      * The file path is considered acceptable if it ends with '.txt'
      */
-    private static boolean isValidPath(Path filePath) {
+    protected static boolean isValidPath(Path filePath) {
         return filePath.toString().endsWith(".txt");
     }
 
